@@ -14,7 +14,7 @@ import com.adaptionsoft.games.uglytrivia.reporter.MyWinMergeReporter;
 @UseReporter(MyWinMergeReporter.class)
 public class GameTest {
 
-    private static final int NB_ITERATION = 10;
+	private static final int NB_ITERATION = 10;
 	private static final int FIXED_SEED = 287389;
 
 	private Random randomizer = new Random(FIXED_SEED);
@@ -32,7 +32,4 @@ public class GameTest {
 
     	Approvals.verify(actualResult.toString());
     }
-
-
-
 }
