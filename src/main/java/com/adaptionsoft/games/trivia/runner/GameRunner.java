@@ -6,8 +6,6 @@ import com.adaptionsoft.games.uglytrivia.Game;
 
 public class GameRunner {
 
-	private static boolean notAWinner;
-
 	public static void main(String[] args) {
 		Random rand = new Random();
 		playGame(rand);
@@ -20,16 +18,19 @@ public class GameRunner {
 		aGame.add("Pat");
 		aGame.add("Sue");
 
+		boolean playerWon = false;
+
 		do {
 
 			aGame.roll(randomizer.nextInt(5) + 1);
 
 			if (randomizer.nextInt(9) == 7) {
-				notAWinner = aGame.wrongAnswer();
+				aGame.wrongAnswer();
 			} else {
-				notAWinner = aGame.wasCorrectlyAnswered();
+				playerWon = aGame.wasCorrectlyAnswered();
 			}
 
-		} while (notAWinner);
+			aGame.nextPlayer();
+		} while (!playerWon);
 	}
 }
