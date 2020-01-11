@@ -1,4 +1,12 @@
+# maven ignored files
+target
+
+#Eclipse ignored files
 .project
 .classpath
 .settings
-target
+
+#IntelliJ ignored files
+.idea
+*.iml
+
