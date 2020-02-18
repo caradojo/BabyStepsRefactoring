@@ -12,7 +12,7 @@ public class Place {
         place = (place + nbPlaces) % 12;
     }
 
-    public int place() {
+    public int position() {
         return place;
     }
 }

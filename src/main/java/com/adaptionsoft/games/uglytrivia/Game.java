@@ -6,7 +6,6 @@ import java.util.LinkedList;
 public class Game {
     private static final int NB_MAX_PLAYERS = 6;
     ArrayList<Player> players = new ArrayList();
-    ArrayList<Place> places = new ArrayList();
     int[] purses = new int[NB_MAX_PLAYERS];
     boolean[] inPenaltyBox = new boolean[NB_MAX_PLAYERS];
 
@@ -29,7 +28,6 @@ public class Game {
 
     public void add(String playerName) {
         players.add(new Player(playerName));
-        places.add(new Place(0));
 
         System.out.println(playerName + " was added");
         System.out.println("They are player number " + players.size());
@@ -45,7 +43,11 @@ public class Game {
     }
 
     private String currentPlayerName() {
-        return players.get(currentPlayer).name();
+        return currentPlayer().name();
+    }
+
+    private Player currentPlayer() {
+        return players.get(currentPlayer);
     }
 
     private boolean canPlay(int roll) {
@@ -73,17 +75,21 @@ public class Game {
 
         System.out.println(currentPlayerName()
                 + "'s new location is "
-                + currentPlayerPlace());
+                + currentPosition());
         System.out.println("The category is " + currentCategory());
     }
 
     private void moveCurrentPlayer(int nbPlaces) {
-        Place place = places.get(currentPlayer);
+        Place place = currentPlayerPlace();
         place.move(nbPlaces);
     }
 
-    private int currentPlayerPlace() {
-        return places.get(currentPlayer).place();
+    private int currentPosition() {
+        return currentPlayerPlace().position();
+    }
+
+    private Place currentPlayerPlace() {
+        return currentPlayer().place();
     }
 
     private void askQuestion() {
@@ -99,15 +105,15 @@ public class Game {
 
 
     private String currentCategory() {
-        if (currentPlayerPlace() == 0) return "Pop";
-        if (currentPlayerPlace() == 4) return "Pop";
-        if (currentPlayerPlace() == 8) return "Pop";
-        if (currentPlayerPlace() == 1) return "Science";
-        if (currentPlayerPlace() == 5) return "Science";
-        if (currentPlayerPlace() == 9) return "Science";
-        if (currentPlayerPlace() == 2) return "Sports";
-        if (currentPlayerPlace() == 6) return "Sports";
-        if (currentPlayerPlace() == 10) return "Sports";
+        if (currentPosition() == 0) return "Pop";
+        if (currentPosition() == 4) return "Pop";
+        if (currentPosition() == 8) return "Pop";
+        if (currentPosition() == 1) return "Science";
+        if (currentPosition() == 5) return "Science";
+        if (currentPosition() == 9) return "Science";
+        if (currentPosition() == 2) return "Sports";
+        if (currentPosition() == 6) return "Sports";
+        if (currentPosition() == 10) return "Sports";
         return "Rock";
     }
 
