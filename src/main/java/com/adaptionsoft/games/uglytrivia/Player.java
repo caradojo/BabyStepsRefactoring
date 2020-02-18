@@ -13,11 +13,11 @@ public class Player {
         return name;
     }
 
-    public Place place() {
-        return place;
-    }
-
     void move(int nbPlaces) {
         place.move(nbPlaces);
+    }
+
+    int position() {
+        return place.position();
     }
 }

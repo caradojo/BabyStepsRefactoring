@@ -75,16 +75,8 @@ public class Game {
 
         System.out.println(currentPlayerName()
                 + "'s new location is "
-                + currentPosition());
+                + currentPlayer().position());
         System.out.println("The category is " + currentCategory());
-    }
-
-    private int currentPosition() {
-        return currentPlayerPlace().position();
-    }
-
-    private Place currentPlayerPlace() {
-        return currentPlayer().place();
     }
 
     private void askQuestion() {
@@ -100,15 +92,15 @@ public class Game {
 
 
     private String currentCategory() {
-        if (currentPosition() == 0) return "Pop";
-        if (currentPosition() == 4) return "Pop";
-        if (currentPosition() == 8) return "Pop";
-        if (currentPosition() == 1) return "Science";
-        if (currentPosition() == 5) return "Science";
-        if (currentPosition() == 9) return "Science";
-        if (currentPosition() == 2) return "Sports";
-        if (currentPosition() == 6) return "Sports";
-        if (currentPosition() == 10) return "Sports";
+        if (currentPlayer().position() == 0) return "Pop";
+        if (currentPlayer().position() == 4) return "Pop";
+        if (currentPlayer().position() == 8) return "Pop";
+        if (currentPlayer().position() == 1) return "Science";
+        if (currentPlayer().position() == 5) return "Science";
+        if (currentPlayer().position() == 9) return "Science";
+        if (currentPlayer().position() == 2) return "Sports";
+        if (currentPlayer().position() == 6) return "Sports";
+        if (currentPlayer().position() == 10) return "Sports";
         return "Rock";
     }
 
