@@ -2,15 +2,15 @@ package com.adaptionsoft.games.uglytrivia;
 
 public class Player {
 
-    private String playerName;
+    private String name;
     private Place place = new Place(0);
 
-    public Player(String playerName) {
-        this.playerName = playerName;
+    public Player(String name) {
+        this.name = name;
     }
 
     public String name() {
-        return playerName;
+        return name;
     }
 
     public Place place() {
