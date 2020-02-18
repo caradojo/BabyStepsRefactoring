@@ -71,17 +71,12 @@ public class Game {
     }
 
     private void movePlayer(int roll) {
-        moveCurrentPlayer(roll);
+        currentPlayer().move(roll);
 
         System.out.println(currentPlayerName()
                 + "'s new location is "
                 + currentPosition());
         System.out.println("The category is " + currentCategory());
-    }
-
-    private void moveCurrentPlayer(int nbPlaces) {
-        Place place = currentPlayerPlace();
-        place.move(nbPlaces);
     }
 
     private int currentPosition() {

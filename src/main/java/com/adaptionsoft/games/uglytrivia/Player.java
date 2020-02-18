@@ -16,4 +16,8 @@ public class Player {
     public Place place() {
         return place;
     }
+
+    void move(int nbPlaces) {
+        place.move(nbPlaces);
+    }
 }
