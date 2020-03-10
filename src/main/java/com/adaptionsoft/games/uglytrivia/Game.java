@@ -4,9 +4,7 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 
 public class Game {
-    private static final int NB_MAX_PLAYERS = 6;
     ArrayList<Player> players = new ArrayList();
-    boolean[] inPenaltyBox = new boolean[NB_MAX_PLAYERS];
 
     LinkedList popQuestions = new LinkedList();
     LinkedList scienceQuestions = new LinkedList();
@@ -50,7 +48,7 @@ public class Game {
     }
 
     private boolean canPlay(int roll) {
-        if (inPenaltyBox[currentPlayer]) {
+        if (currentPlayer().isInPenaltyBox()) {
             if (roll % 2 == 0) {
                 isGettingOutOfPenaltyBox = false;
                 System.out.println(currentPlayerName() + " is not getting out of the penalty box");
@@ -104,7 +102,7 @@ public class Game {
     }
 
     public boolean wasCorrectlyAnswered() {
-        if (inPenaltyBox[currentPlayer]) {
+        if (currentPlayer().isInPenaltyBox()) {
             if (isGettingOutOfPenaltyBox) {
                 System.out.println("Answer was correct!!!!");
                 currentPlayer().addCoin();
@@ -132,7 +130,7 @@ public class Game {
     public void wrongAnswer() {
         System.out.println("Question was incorrectly answered");
         System.out.println(currentPlayerName() + " was sent to the penalty box");
-        inPenaltyBox[currentPlayer] = true;
+        currentPlayer().putInPenaltyBox();
     }
 
     public void nextPlayer() {
