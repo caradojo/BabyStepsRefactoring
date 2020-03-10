@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 
 public class Game {
+    private static final int PURSE_QUANTITY_TO_WIN = 6;
     ArrayList<Player> players = new ArrayList();
 
     LinkedList popQuestions = new LinkedList();
@@ -139,6 +140,6 @@ public class Game {
     }
 
     private boolean didPlayerWin() {
-        return (currentPlayer().purse() == 6);
+        return (currentPlayer().purse() == PURSE_QUANTITY_TO_WIN);
     }
 }
