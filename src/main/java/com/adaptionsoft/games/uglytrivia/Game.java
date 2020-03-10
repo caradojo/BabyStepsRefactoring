@@ -6,7 +6,6 @@ import java.util.LinkedList;
 public class Game {
     private static final int NB_MAX_PLAYERS = 6;
     ArrayList<Player> players = new ArrayList();
-    int[] purses = new int[NB_MAX_PLAYERS];
     boolean[] inPenaltyBox = new boolean[NB_MAX_PLAYERS];
 
     LinkedList popQuestions = new LinkedList();
@@ -108,10 +107,10 @@ public class Game {
         if (inPenaltyBox[currentPlayer]) {
             if (isGettingOutOfPenaltyBox) {
                 System.out.println("Answer was correct!!!!");
-                purses[currentPlayer]++;
+                currentPlayer().addCoin();
                 System.out.println(currentPlayerName()
                         + " now has "
-                        + purses[currentPlayer]
+                        + currentPlayer().purse()
                         + " Gold Coins.");
 
                 return didPlayerWin();
@@ -120,10 +119,10 @@ public class Game {
             }
         } else {
             System.out.println("Answer was corrent!!!!");
-            purses[currentPlayer]++;
+            currentPlayer().addCoin();
             System.out.println(currentPlayerName()
                     + " now has "
-                    + purses[currentPlayer]
+                    + currentPlayer().purse()
                     + " Gold Coins.");
 
             return didPlayerWin();
@@ -142,6 +141,6 @@ public class Game {
     }
 
     private boolean didPlayerWin() {
-        return (purses[currentPlayer] == 6);
+        return (currentPlayer().purse() == 6);
     }
 }
